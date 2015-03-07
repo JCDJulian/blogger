@@ -5,6 +5,8 @@ class ArticlesController < ApplicationController
     end
     def show
     	@article = Article.find(params[:id])
+        @comment = Comment.new
+        @comment.article_id = @article.id
     end
     def new
     	@article = Article.new
@@ -25,8 +27,6 @@ class ArticlesController < ApplicationController
     end
     def edit
         @article = Article.find(params[:id])
-        flash.notice = "Article '#{@article.title}' Edited!"
-
     end
     def update
         @article = Article.find(params[:id])
